@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.amazon.buspassmanagement.AppTest" time="0.576" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.amazon.buspassmanagement.AppTest" time="0.55" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Users\amarajz\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.5.v20221102-0933\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\amarajz\AppData\Local\Temp\surefire13794668784263823521\surefirebooter-20230127153026034_3.jar C:\Users\amarajz\AppData\Local\Temp\surefire13794668784263823521 2023-01-27T15-30-25_318-jvmRun1 surefire-20230127153026034_1tmp surefire_0-20230127153026034_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\amarajz\AppData\Local\Temp\surefire7374783860823117847\surefirebooter-20230126131328989_3.jar C:\Users\amarajz\AppData\Local\Temp\surefire7374783860823117847 2023-01-26T13-13-28_376-jvmRun1 surefire-20230126131328989_1tmp surefire_0-20230126131328989_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\amarajz\Desktop\3WeekProject\buspassmanagement\target\test-classes;C:\Users\amarajz\Desktop\3WeekProject\buspassmanagement\target\classes;C:\Users\amarajz\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\amarajz\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\amarajz\.m2\repository\com\microsoft\sqlserver\mssql-jdbc\11.2.0.jre8\mssql-jdbc-11.2.0.jre8.jar;C:\Users\amarajz\.m2\repository\com\microsoft\azure\msal4j\1.13.0\msal4j-1.13.0.jar;C:\Users\amarajz\.m2\repository\com\nimbusds\oauth2-oidc-sdk\9.35\oauth2-oidc-sdk-9.35.jar;C:\Users\amarajz\.m2\repository\com\github\stephenc\jcip\jcip-annotations\1.0-1\jcip-annotations-1.0-1.jar;C:\Users\amarajz\.m2\repository\com\nimbusds\content-type\2.2\content-type-2.2.jar;C:\Users\amarajz\.m2\repository\com\nimbusds\lang-tag\1.6\lang-tag-1.6.jar;C:\Users\amarajz\.m2\repository\com\nimbusds\nimbus-jose-jwt\9.22\nimbus-jose-jwt-9.22.jar;C:\Users\amarajz\.m2\repository\net\minidev\json-smart\2.4.8\json-smart-2.4.8.jar;C:\Users\amarajz\.m2\repository\net\minidev\accessors-smart\2.4.8\accessors-smart-2.4.8.jar;C:\Users\amarajz\.m2\repository\org\ow2\asm\asm\9.1\asm-9.1.jar;C:\Users\amarajz\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\amarajz\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.13.2.1\jackson-databind-2.13.2.1.jar;C:\Users\amarajz\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.13.2\jackson-annotations-2.13.2.jar;C:\Users\amarajz\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.13.2\jackson-core-2.13.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\amarajz\AppData\Local\Temp\surefire13794668784263823521\surefirebooter-20230127153026034_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\amarajz\AppData\Local\Temp\surefire7374783860823117847\surefirebooter-20230126131328989_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.5+8"/>
@@ -58,7 +58,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testAdminLogin" classname="com.amazon.buspassmanagement.AppTest" time="0.569">
+  <testcase name="testAdminLogin" classname="com.amazon.buspassmanagement.AppTest" time="0.541">
     <system-out><![CDATA[[DB] Driver Loaded Successfully....
 DB Configured using File :)
 [DB] Connection Created Successfully....

@@ -1,2 +1,0 @@
-jdbc:mysql://localhost/buspassdb
-root

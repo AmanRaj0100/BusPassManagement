@@ -56,6 +56,8 @@ public class UserDAO implements DAO<User>{
 		} catch (Exception e) {
 			System.err.println("Something Went Wrong: "+e);
 		}
+
+		
 		return users;
 	}
 

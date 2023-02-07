@@ -7,24 +7,20 @@ public class App {
 	private App() {
 	}
 	
-    public static void main(String[] args ){
+    public static void main( String[] args ){
     	
     	System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println( "Welcome to Bus Pass Management Application" );
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         
-       
+        Menu menu = new Menu();
         
         if(args.length > 0) {
         	DB.FILEPATH = args[0];
         }
-        //Menu menu = new Menu();
-        //menu.showMainMenu();
         
-        //or
-        
-        new Menu().showMainMenu();
-        
+        menu.showMainMenu();
+        //AuthenticationService.getInstance();
     }
     
 }
