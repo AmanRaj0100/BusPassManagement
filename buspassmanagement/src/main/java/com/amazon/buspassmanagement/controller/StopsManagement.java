@@ -72,7 +72,7 @@ public class StopsManagement extends Management{
 	}
 
 	private boolean createStop() {
-		
+		RoutesManagement manageRoutes = RoutesManagement.getInstance();
 		manageRoutes.retrieveRoute();
 		System.out.println("Select the routeID of the Route for which you want to add Stops: ");
 		stops.routeID = Integer.parseInt(scanner.nextLine());//scanner.nextInt();
@@ -103,8 +103,12 @@ public class StopsManagement extends Management{
 		String sql = "SELECT * FROM Stops WHERE routeID = '"+route.routeID+"'";
 		List <Stops> stop = new ArrayList<Stops>();
 		stop = stopdao.retrieve(sql);
-		for (Stops stopsDetails :stop) {
-			stops.prettyPrintForAdmin(stopsDetails);
+		if(stop.size()>0) {
+			for (Stops stopsDetails :stop) {
+				stops.prettyPrintForAdmin(stopsDetails);
+			}
+		}else {
+			System.out.println("There are no stops available for this Route.");
 		}
 	}
 	
@@ -135,34 +139,39 @@ public class StopsManagement extends Management{
 		}
 	}
 	
-	private boolean deleteStop() {
+	private void deleteStop() {
 		
-		System.out.println(stopdao.retrieve());
-		
-		System.out.println("Select the routeID of the Route for which you want to delete all of its Stops: ");
-		stops.routeID = Integer.parseInt(scanner.nextLine());//scanner.nextInt();
-		
-		if (stopdao.delete(stops) > 0)
-			return true;
-		else
-			return false;
+		if(displayStop()) {
+			System.out.println("Select the routeID of the Route for which you want to delete all of its Stops: ");
+			stops.routeID = Integer.parseInt(scanner.nextLine());//scanner.nextInt();
+			
+			if (stopdao.delete(stops) > 0)
+				System.out.println("Stops Deleted Successfully");
+			else
+				System.out.println("Stops Cannot be Deleted");
+		}
+		else {
+			System.out.println("Cannot process your request");
+		}
 	}
 	
-	public void displayStop() {
-        //scanner.nextLine();
+	
+	public boolean displayStop() {
+        
         System.out.println("Enter the Route ID for the stops you want to search");
         stops.routeID = Integer.parseInt(scanner.nextLine());
         String sql = "SELECT * FROM Stops WHERE routeID = '"+stops.routeID+"'";
         List <Stops> getStop =  new ArrayList<Stops>();
         getStop = stopdao.retrieve(sql);
-        //System.out.println(stopdao.retrieve(sql));
-        System.out.println("stopID \t\t address \t sequenceOrder \t routeID \t adminID \t createdOn");
-        for (Stops stops : getStop) {
-            System.out.print(stops.stopID+"\t\t"+stops.address+"\t\t"+stops.sequenceOrder+"\t"+stops.routeID+"\t"+stops.adminID+"\t"+stops.createdOn);
-            System.out.println();
-        }
+        if(getStop.size()>0) {
+        	System.out.println("stopID\taddress\tsequenceOrder\trouteID\tadminID\tcreatedOn");
+            for (Stops stops : getStop) {
+                System.out.println(stops.stopID+ "\t" +stops.address+ "\t" +stops.sequenceOrder+ "\t" +stops.routeID+ "\t" +stops.adminID+ "\t" +stops.createdOn);
+            }
+            return true;
+        } else {
+        	System.out.println("No Stops exists for this particular Route");
+        	return false;
+        }   
     }
-
-	
-	
 }

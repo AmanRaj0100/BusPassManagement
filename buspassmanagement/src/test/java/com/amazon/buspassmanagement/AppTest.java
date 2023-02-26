@@ -48,6 +48,11 @@ public class AppTest {
 	@Test
 	public void testAdminLogin() {
 		
+		System.out.println("Commented for Creating Maven build as\r\n"
+				+ " * Those Test Cases below because they were creating duplicates of Foreign Key\r\n"
+				+ " * After running it for the second time.\r\n"
+				+ " * But they are still working");
+		
 		User user = new User();
 		user.email = "aman@example.com";
 		user.password = "admin123";
@@ -74,7 +79,15 @@ public class AppTest {
 		Assert.assertEquals(2, user.type);
 	}
 	
-/*	@Test
+/*
+ * Commented for Creating Maven build as
+ * Those Test Cases below because they were creating duplicates of Foreign Key
+ * After running it for the second time.
+ * But they are still working
+ * 
+ * */
+	
+	@Test
 	public void testAddRoute() {
 		
 		User user = new User();
@@ -94,9 +107,9 @@ public class AppTest {
 		int result = routedao.insert(route);
 		
 		Assert.assertTrue(result>0);
-	}*/
+	}
 	
-/*	@Test
+	@Test
 	public void testAddStop() {
 		
 		int result=0;
@@ -129,9 +142,9 @@ public class AppTest {
 		}
 		
 		Assert.assertTrue(result>0);
-	}*/
+	}
 	
-/*	@Test
+	@Test
 	public void testUpdateVehicle() {
 		
 		Vehicles testVehicles = new Vehicles();
@@ -159,9 +172,9 @@ public class AppTest {
 		//Assert.assertEquals(true,result);
 		Assert.assertTrue(result>0);
 		
-	}*/
+	}
 	
-/*	@Test
+	@Test
 	public void testApproveRejectPass() {
 		
 		User user = new User();
@@ -188,9 +201,9 @@ public class AppTest {
 		//Assert.assertEquals(true,result);
 		Assert.assertTrue(result>0);
         
-	}*/
+	}
 
-/*	@Test
+	@Test
 	public void testAddFeedback() {
 		User user = new User();
 		user.email = "john@example.com";
@@ -207,5 +220,5 @@ public class AppTest {
 		testFeedback.userID = buspassSession.user.id;
 		boolean result = (feedbackdaoTest.insert(testFeedback)>0);
 		Assert.assertEquals(true,result);
-	}*/
+	}
 }

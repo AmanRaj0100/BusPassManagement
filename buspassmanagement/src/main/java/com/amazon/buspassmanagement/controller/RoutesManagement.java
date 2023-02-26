@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.amazon.buspassmanagement.buspassSession;
+import com.amazon.buspassmanagement.model.BusPass;
 import com.amazon.buspassmanagement.model.Routes;
+import com.amazon.buspassmanagement.model.Stops;
+import com.amazon.buspassmanagement.model.Vehicles;
 
 public class RoutesManagement extends Management {
 
@@ -97,16 +100,20 @@ public class RoutesManagement extends Management {
 			}
 		}
 		else if (choice == 2){
-			scanner.nextLine();
 			System.out.println("Enter the Route Title you want to search");
 			routes.title = scanner.nextLine();
 			String sql = "SELECT * FROM Routes WHERE title = '"+routes.title+"'";
 			List<Routes> getRoutes = new ArrayList<Routes>();
 			getRoutes = routedao.retrieve(sql);
-			for (Routes route : getRoutes) {
-				routes.prettyPrintForAdmin(route);
-				manageStops.retrieveStop(route);
-				manageVehicle.retrieveVehicle(route);
+			
+			if(getRoutes.size()>0) {
+				for (Routes route : getRoutes) {
+					routes.prettyPrintForAdmin(route);
+					manageStops.retrieveStop(route);
+					manageVehicle.retrieveVehicleForRoute(route);
+				}
+			}else {
+				System.out.println("Please Enter a valid Route Title or No such route exists.");
 			}
 		}
 		
@@ -143,27 +150,87 @@ public class RoutesManagement extends Management {
 			return false;
 	}
 	
-	public boolean deleteRoute() {
+	
+	public void deleteRoute() {
 		
 		retrieveRoute();
-		System.out.println("Select the routeID for the Route you want to delete: ");
-		routes.routeID = Integer.parseInt(scanner.nextLine());//scanner.nextInt();
+		System.out.println("Enter the routeID for the Route to be deleted: ");
+		routes.routeID = Integer.parseInt(scanner.nextLine());
 		
-		if (routedao.delete(routes) > 0)
-			return true;
-		else
-			return false;
+		System.out.println("Everyhting will be deleted associated to that Route, including Stops, Vehicles and Bus Passes");
+        System.out.println("Delete? \n1. Yes 2. No");
+        int choice = Integer.parseInt(scanner.nextLine());
+		
+        
+        if (choice == 1) {
+        	String sql = "Select * from Routes where routeID="+routes.routeID;
+        	List<Routes> routeDetails = routedao.retrieve(sql);
+        	
+        	if(routeDetails.size()>0) {
+        		sql = "Select * from BusPass where routeId="+routes.routeID;
+        		List<BusPass> passDetails = buspassdao.retrieve(sql);
+        		
+        		if(passDetails.size()>0) {
+        			for(BusPass pass:passDetails) {
+    					buspassdao.delete(pass);
+    				}
+        			System.out.println("Bus Passes Deleted");
+        		}else {
+        			System.out.println("There are no Bus Passes available for this route");
+        		}
+        		
+        		sql = "Select * from Stops where routeID="+routes.routeID;
+        		List<Stops> stopDetails = stopdao.retrieve(sql);
+        		
+        		if(stopDetails.size()>0) {
+        			for(Stops stop:stopDetails) {
+        				stopdao.delete(stop);
+        			}
+        			System.out.println("Stops Deleted");
+        		}else {
+        			System.out.println("There are no Stops available for this route");
+        		}
+        		
+        		sql = "Select * from Vehicles where routeID="+routes.routeID;
+        		List<Vehicles> vehicleDetails = vehicledao.retrieve(sql);
+        		
+        		if(vehicleDetails.size()>0) {
+        			for(Vehicles vehicle:vehicleDetails) {
+        				vehicledao.delete(vehicle);
+        			}
+        			System.out.println("Vehicles Deleted");
+        		}else {
+        			System.out.println("There are no Vehicles available for this route");
+        		}
+        		
+        		int result = routedao.delete(routes);
+        		String message = (result > 0) ? "Route Deleted Successfully" : "Deleting Route Failed. Try Again.."; 
+    			System.out.println(message);
+        		
+        	}else {
+        		System.err.println("There is no route to display !");
+        	}
+        	
+        }
+        else
+        	System.out.println("Route Not Deleted");  
 	}
 	
-	public void displayRoutes() {
+	public boolean displayRoutes() {
 		System.out.println("Enter the Route Title of the Route: ");
 		routes.title = scanner.nextLine();
 		String sql = "Select * From Routes Where title ='"+routes.title+"';";
 		List<Routes> routetoDisplay = new ArrayList<Routes>();
 		routetoDisplay = routedao.retrieve(sql);
 		
-		for (Routes route : routetoDisplay) {
-			routes.prettyPrintForUser(route);
+		if(routetoDisplay.size()>0) {
+			for (Routes route : routetoDisplay) {
+				routes.prettyPrintForUser(route);
+			}
+			return true;
+		} else {
+			System.out.println("No Routes to display for this Route Title.");
+			return false;
 		}	
 	}
 	

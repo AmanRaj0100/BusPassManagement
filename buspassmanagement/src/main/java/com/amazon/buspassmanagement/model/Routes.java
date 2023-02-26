@@ -35,21 +35,21 @@ public class Routes {
 	}
 	
 	public void prettyPrintForAdmin(Routes route) {
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("RouteID:\t\t"+route.routeID);
 		System.out.println("Title:\t\t\t"+route.title);
 		System.out.println("Description:\t\t"+route.description);
 		System.out.println("AdminID:\t\t"+route.adminID);
 		System.out.println("CreatedOn:\t\t"+route.createdOn);
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 	}
 	
 	public void prettyPrintForUser(Routes route) {
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("RouteID:\t"+route.routeID);
 		System.out.println("Title:\t\t"+route.title);
 		System.out.println("Description:\t"+route.description);
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~");
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 	}
 
 	@Override

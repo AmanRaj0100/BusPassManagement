@@ -17,9 +17,6 @@ public class AdminMenu extends Menu {
 		// Login Code should come before the Menu becomes Visible to the Admin
 		User adminUser = new User();
 		
-		// An empty scanner.nextLine as we are reading string after int :)
-		//scanner.nextLine();
-		
 		System.out.println("Enter Your Email:");
 		adminUser.email = scanner.nextLine();
 		

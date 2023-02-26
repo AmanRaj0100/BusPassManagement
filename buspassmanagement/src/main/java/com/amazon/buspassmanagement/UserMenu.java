@@ -115,8 +115,6 @@ public class UserMenu extends Menu {
 							break;
 							
 						case 2:
-							routes.displayRoutes();
-							System.out.println("****************************");
 							buspass.requestPass();
 							break;
 		
@@ -136,8 +134,6 @@ public class UserMenu extends Menu {
 							choice = Integer.parseInt(scanner.nextLine());//scanner.nextInt();
 							
 							if(choice == 1) {
-								
-								//scanner.nextLine();
 								
 								System.out.println("Enter Your Name:");
 								String name = scanner.nextLine();

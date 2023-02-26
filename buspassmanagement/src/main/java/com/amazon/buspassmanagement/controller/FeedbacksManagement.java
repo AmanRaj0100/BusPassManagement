@@ -78,20 +78,32 @@ public class FeedbacksManagement extends Management {
 			System.out.println(message);
 		}
 		
+		
 		public void deleteFeedback() {
 			
-			viewFeedbacks();
-			System.out.println("Enter FeedbackID to be deleted: ");
-			feedbacks.feedbackID = Integer.parseInt(scanner.nextLine());//scanner.nextInt();
-			int result = feedbackdao.delete(feedbacks);
-			String message = (result > 0) ? "Feedback Deleted Successfully" : "Deleting Feedback Failed. Try Again.."; 
-			System.out.println(message);
+			if(viewFeedbacks()) {
+				System.out.println("Enter FeedbackID to be deleted: ");
+				feedbacks.feedbackID = Integer.parseInt(scanner.nextLine());
+				int result = feedbackdao.delete(feedbacks);
+				String message = (result > 0) ? "Feedback Deleted Successfully" : "Deleting Feedback Failed. Try Again.."; 
+				System.out.println(message);
+			}else {
+				System.out.println("Cannot Process your request");
+			}
 		}
 		
-		public void viewFeedbacks() {
+		
+		public boolean viewFeedbacks() {
 			List<Feedbacks> feedbacks = feedbackdao.retrieve();
-			for(Feedbacks object : feedbacks) {
-				object.prettyPrint();
+			
+			if(feedbacks.size()>0) {
+				for(Feedbacks object : feedbacks) {
+					object.prettyPrint();
+				}
+				return true;
+			} else {
+				System.out.println("No Feedbacks available to display");
+				return false;
 			}
 		}
 		
@@ -101,8 +113,12 @@ public class FeedbacksManagement extends Management {
 			
 			List<Feedbacks> feedbacks = feedbackdao.retrieve(sql);
 			
-			for(Feedbacks object : feedbacks) {
-				object.prettyPrint();
+			if(feedbacks.size()>0) {
+				for(Feedbacks object : feedbacks) {
+					object.prettyPrint();
+				}
+			}else {
+				System.out.println("No Feedbacks available to display");
 			}
 		}
 }

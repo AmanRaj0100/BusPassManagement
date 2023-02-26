@@ -56,13 +56,14 @@ public class Feedbacks {
 			title = "Complaint";
 		}else if(type == 3) {
 			title = "BusPass Suspension";
+			System.out.println("Bus Pass can be suspended only in Months");
+			System.out.println("Enter months in digits under Description: ");
 		}else {
 			title = "";
 		}
 		
 		System.out.println("Enter Description:");
 		description = scanner.nextLine();
-
 	}
 	
 	public void prettyPrint() {

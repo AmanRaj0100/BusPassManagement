@@ -110,6 +110,8 @@ public class Vehicles {
 			System.out.println("Vehicle Availability:\t"+vehicleAvailable);
 			System.out.println("~~~~~~~~~~~~~~~~~~~~~");
 		}
+		
+		
 
 		@Override
 		public String toString() {
