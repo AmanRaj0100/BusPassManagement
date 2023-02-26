@@ -102,3 +102,12 @@ drop table Feedbacks;
 select * from Feedbacks;
 
 -----------------------------------------------------------------------------------------
+---For Testing all the Implementation
+
+Select * From Users;
+Select * From Routes;
+Select * From Stops;
+Select * From Vehicles;
+Select * From BusPass;
+Select * From Feedbacks;
+
